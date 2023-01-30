@@ -29,7 +29,7 @@ type ReadLinkFS interface {
 func ReadLink(fsys fs.FS, name string) (string, error) {
 	f, ok := fsys.(ReadLinkFS)
 	if !ok {
-		err := fmt.Errorf("symlink found in file system which does not implement fs.ReadLinkFS: %t (%w)", fsys, fs.ErrInvalid)
+		err := fmt.Errorf("symlink found in file system which does not implement fs.ReadLinkFS: %T (%w)", fsys, fs.ErrInvalid)
 		return "", &fs.PathError{"readlink", name, err}
 	}
 	link, err := f.ReadLink(name)
