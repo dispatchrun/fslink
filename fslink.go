@@ -44,7 +44,7 @@ func ReadLink(fsys fs.FS, name string) (string, error) {
 	case strings.HasPrefix(link, "../"):
 	case fs.ValidPath(link):
 	default:
-		return "", &fs.PathError{"readlink", name, fmt.Errorf("malformed link target: %s (%w)", fsys, fs.ErrInvalid)}
+		return "", &fs.PathError{"readlink", name, fmt.Errorf("malformed link target: %q (%w)", link, fs.ErrInvalid)}
 	}
 	return link, nil
 }
