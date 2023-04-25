@@ -1,3 +1,3 @@
 module github.com/stealthrocket/fslink
 
-go 1.19
+go 1.20
